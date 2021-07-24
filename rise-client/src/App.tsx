@@ -1,16 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import KnowledgeCheckBlock from './components/knowledge-check-block';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <div className='container'>
-            <h3>Knowledge Check Block</h3>
-          <div className='knowledge-check-block'>
-
-          </div>
+          <KnowledgeCheckBlock />
         </div>
       </header>
     </div>

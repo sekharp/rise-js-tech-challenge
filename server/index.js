@@ -101,6 +101,10 @@ function server() {
   const port = process.env.PORT || 5000
 
   app.use(morgan('dev'))
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 
   app.get('/tab-blocks', (req, res) => res.send(db.tabBlocks))
   app.get('/flashcard-blocks', (req, res) => res.send(db.flashcardBlocks))
