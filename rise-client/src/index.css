@@ -22,7 +22,7 @@ code {
   font-family: "Merriweather";
   height: 22em;
   width: 75%;
-  text-align: center;
+  text-align: left;
   display: inline-block;
   margin: 0 1.5% 2em;
   padding: 1em;
@@ -34,4 +34,9 @@ code {
     margin: 1em auto;
     width: 100%;
   }
+}
+
+.knowledge-check-image {
+  width: 100%;
+  height: auto;
 }
