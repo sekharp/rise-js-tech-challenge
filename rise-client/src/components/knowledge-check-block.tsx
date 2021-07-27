@@ -42,6 +42,12 @@ const KnowledgeCheckBlock = () => {
           </div>)
         })}
         <button className="btn" disabled={false} type="submit" onClick={handleSubmit}>Submit</button>
+        {submitted && (
+          <div>
+            Correct OR Incorrect<br/>
+            {(knowledgeCheckData as any)?.feedback}
+          </div>
+        )}
       </div>
     </>
   );
