@@ -17,7 +17,7 @@ const KnowledgeCheckBlock = () => {
           if (a.isSelected) {
             setSelectedAnswer(a);
           }
-          if (res[0].isSubmitted) {
+          if (res[0].submitted) {
             setSubmitted(true);
           }
         })

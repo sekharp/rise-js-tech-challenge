@@ -116,7 +116,7 @@ function server() {
   app.put("/knowledge-check-blocks/:id", (req, res) => {
     db.knowledgeCheckBlocks.map(kb => {
       if (kb.id === parseInt(req.params.id)) {
-        kb.submitted = (req.body.submitted) ? true : false;
+        kb.submitted = (req.body.body.submitted) ? true : false;
         kb.answers.map(answer => {
           answer.isSelected = (answer.text === req.body.body.answerText) ? true : false
           return answer
