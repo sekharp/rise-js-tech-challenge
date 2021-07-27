@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { isEmpty } from 'lodash';
+import retakeIcon from './../images/retake-icon.png'
 
 const KnowledgeCheckBlock = () => {
   const [knowledgeCheckData, setKnowledgeCheckData] = useState({});
@@ -41,12 +42,14 @@ const KnowledgeCheckBlock = () => {
               {a.text}
             </label>
           </div>)
-        })}
-        <button className="btn" disabled={!isEmpty(selectedAnswer) && submitted} type="submit" onClick={handleSubmit}>Submit</button>
+        })}<br/>
+        <button className="btn" disabled={!isEmpty(selectedAnswer) && submitted} type="submit" onClick={handleSubmit}>Submit</button><br/><br/>
         {submitted && (
           <div>
-            {(selectedAnswer as any)?.isCorrect ? 'Correct' : 'Incorrect'}<br/>
-            {(knowledgeCheckData as any)?.feedback}
+            {(selectedAnswer as any)?.isCorrect ? 'Correct' : 'Incorrect'}<br/><br/>
+            {(knowledgeCheckData as any)?.feedback}<br/><br/>
+            Take Again<br/><br/>
+            <img src={retakeIcon} className='retake-icon' />
           </div>
         )}
       </div>
