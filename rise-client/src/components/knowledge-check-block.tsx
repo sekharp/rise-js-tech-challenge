@@ -25,7 +25,7 @@ const KnowledgeCheckBlock = () => {
     setSubmitted(true);
   }
 
-  console.log(submitted)
+  console.log(selectedAnswer)
 
   return (
     <>
@@ -44,7 +44,7 @@ const KnowledgeCheckBlock = () => {
         <button className="btn" disabled={false} type="submit" onClick={handleSubmit}>Submit</button>
         {submitted && (
           <div>
-            Correct OR Incorrect<br/>
+            {(selectedAnswer as any)?.isCorrect ? 'Correct' : 'Incorrect'}<br/>
             {(knowledgeCheckData as any)?.feedback}
           </div>
         )}
