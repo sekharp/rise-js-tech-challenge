@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { isEmpty } from 'lodash';
 
 const KnowledgeCheckBlock = () => {
   const [knowledgeCheckData, setKnowledgeCheckData] = useState({});
@@ -41,7 +42,7 @@ const KnowledgeCheckBlock = () => {
             </label>
           </div>)
         })}
-        <button className="btn" disabled={false} type="submit" onClick={handleSubmit}>Submit</button>
+        <button className="btn" disabled={!isEmpty(selectedAnswer) && submitted} type="submit" onClick={handleSubmit}>Submit</button>
         {submitted && (
           <div>
             {(selectedAnswer as any)?.isCorrect ? 'Correct' : 'Incorrect'}<br/>
