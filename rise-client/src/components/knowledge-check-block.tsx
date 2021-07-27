@@ -91,7 +91,11 @@ const KnowledgeCheckBlock = () => {
             {(selectedAnswer as any)?.isCorrect ? 'Correct' : 'Incorrect'}<br/><br/>
             {(knowledgeCheckData as any)?.feedback}<br/><br/>
             Take Again<br/><br/>
-            <img src={retakeIcon} className='retake-icon' />
+            <a onClick={() => {
+              setSubmitted(false) as any && setSelectedAnswer({})
+            }}>
+              <img src={retakeIcon} className='retake-icon' />
+            </a>
           </div>
         )}
       </div>
