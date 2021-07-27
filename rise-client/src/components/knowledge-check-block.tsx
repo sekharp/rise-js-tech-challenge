@@ -3,6 +3,7 @@ import axios from "axios";
 
 const KnowledgeCheckBlock = () => {
   const [knowledgeCheckData, setKnowledgeCheckData] = useState({});
+  const [selectedAnswer, setSelectedAnswer] = useState({})
 
   useEffect(() => {
     axios
@@ -14,18 +15,22 @@ const KnowledgeCheckBlock = () => {
       .catch(console.error);
   }, []);
 
-  console.log(knowledgeCheckData)
+  const handleChange = (answer: any) => {
+    setSelectedAnswer(answer);
+  }
+
+  console.log(selectedAnswer)
 
   return (
     <>
       <h3>Knowledge Check Block</h3>
       <div className='knowledge-check-block'>
-        <p>What is this a picture of?</p>
+        <p>{(knowledgeCheckData as any)?.question?.text}</p>
         <img className="knowledge-check-image" alt="knowledge-check-img" src={(knowledgeCheckData as any)?.question?.media?.url} />
-        {(knowledgeCheckData as any)?.answers?.map((a, i) => {
+        {(knowledgeCheckData as any)?.answers?.map((a: any, i: any) => {
           return (<div className={`option ${a?.text}`} key={i}>
             <label>
-              <input type="radio" checked={a?.text} />
+              <input type="radio" checked={a?.text === (selectedAnswer as any)?.text} onChange={() => handleChange(a)}/>
               {a.text}
             </label>
           </div>)
