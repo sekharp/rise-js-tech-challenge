@@ -4,6 +4,7 @@ import axios from "axios";
 const KnowledgeCheckBlock = () => {
   const [knowledgeCheckData, setKnowledgeCheckData] = useState({});
   const [selectedAnswer, setSelectedAnswer] = useState({})
+  const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
     axios
@@ -19,7 +20,12 @@ const KnowledgeCheckBlock = () => {
     setSelectedAnswer(answer);
   }
 
-  console.log(selectedAnswer)
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
+  console.log(submitted)
 
   return (
     <>
@@ -35,6 +41,7 @@ const KnowledgeCheckBlock = () => {
             </label>
           </div>)
         })}
+        <button className="btn" disabled={false} type="submit" onClick={handleSubmit}>Submit</button>
       </div>
     </>
   );
