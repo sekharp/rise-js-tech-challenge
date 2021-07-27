@@ -20,14 +20,46 @@ const KnowledgeCheckBlock = () => {
 
   const handleChange = (answer: any) => {
     setSelectedAnswer(answer);
+    const data = { answerText: (answer as any)?.text };
+    axios
+      .put(
+        `http://localhost:5000/knowledge-check-blocks/1`,
+        {
+            method: "PUT",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: data
+        }
+      )
+      .then((res) => res.data)
+      .catch(error => console.log(error));
   }
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setSubmitted(true);
+
+    const data = {
+      submitted: true,
+      answerText: (selectedAnswer as any)?.text
+    };
+    axios
+      .put(
+          `http://localhost:5000/knowledge-check-blocks/1`,
+          {
+              method: "PUT",
+              headers: {
+                  'Content-type': 'application/json'
+              },
+              body: data
+          }
+      )
+      .then((res) => res.data)
+      .catch(error => console.log(error));
   }
 
-  console.log(selectedAnswer)
+  console.log(knowledgeCheckData)
 
   return (
     <>

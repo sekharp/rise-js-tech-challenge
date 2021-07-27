@@ -74,6 +74,7 @@ const db = {
   ],
   knowledgeCheckBlocks:  [
     {
+      id: 1,
       question: {
         text: 'What is this a picture of?',
         media: {
@@ -98,18 +99,32 @@ const db = {
 
 function server() {
   const app = express()
+  app.use(express.json());
   const port = process.env.PORT || 5000
 
   app.use(morgan('dev'))
   app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
 
   app.get('/tab-blocks', (req, res) => res.send(db.tabBlocks))
   app.get('/flashcard-blocks', (req, res) => res.send(db.flashcardBlocks))
   app.get('/knowledge-check-blocks', (req, res) => res.send(db.knowledgeCheckBlocks))
-
+  app.put("/knowledge-check-blocks/:id", (req, res) => {
+    db.knowledgeCheckBlocks.map(kb => {
+      if (kb.id === parseInt(req.params.id)) {
+        kb.submitted = (req.body.submitted) ? true : false;
+        kb.answers.map(answer => {
+          answer.isSelected = (answer.text === req.body.body.answerText) ? true : false
+          return answer
+        });
+      }
+    });
+    res.json({data: db.knowledgeCheckBlocks});
+  });
   app.start = app.listen.bind(app, port, () => console.log(`Listening on port ${port}`))
 
   return app
