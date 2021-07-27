@@ -36,12 +36,14 @@ const KnowledgeCheckBlock = () => {
         <p>{(knowledgeCheckData as any)?.question?.text}</p>
         <img className="knowledge-check-image" alt="knowledge-check-img" src={(knowledgeCheckData as any)?.question?.media?.url} />
         {(knowledgeCheckData as any)?.answers?.map((a: any, i: any) => {
-          return (<div className={`option ${a?.text}`} key={i}>
-            <label>
-              <input type="radio" checked={a?.text === (selectedAnswer as any)?.text} onChange={() => handleChange(a)}/>
-              {a.text}
-            </label>
-          </div>)
+          return (
+            <div className={`option ${a?.text}`} key={i} onClick={() => handleChange(a)}>
+              <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer as any)?.text} />
+              <label className='radio-custom-label'>
+                {a.text}
+              </label>
+            </div>
+            )
         })}<br/>
         <button className="btn" disabled={!isEmpty(selectedAnswer) && submitted} type="submit" onClick={handleSubmit}>Submit</button><br/><br/>
         {submitted && (
