@@ -13,6 +13,14 @@ const KnowledgeCheckBlock = () => {
       .get(`http://localhost:5000/knowledge-check-blocks`)
       .then((res) => res.data)
       .then((res) => {
+        (res[0] as any).answers.map((a: any) => {
+          if (a.isSelected) {
+            setSelectedAnswer(a);
+          }
+          if (res[0].isSubmitted) {
+            setSubmitted(true);
+          }
+        })
         setKnowledgeCheckData(res[0] as any)
       })
       .catch(console.error);
