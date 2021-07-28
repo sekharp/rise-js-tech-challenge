@@ -13,7 +13,7 @@ const KnowledgeCheckBlock = () => {
       .get(`http://localhost:5000/knowledge-check-blocks`)
       .then((res) => res.data)
       .then((res) => {
-        (res[0] as any).answers.map((a: any) => {
+        (res[0]).answers.map((a) => {
           if (a.isSelected) {
             setSelectedAnswer(a);
           }
@@ -21,14 +21,14 @@ const KnowledgeCheckBlock = () => {
             setSubmitted(true);
           }
         })
-        setKnowledgeCheckData(res[0] as any)
+        setKnowledgeCheckData(res[0])
       })
       .catch(console.error);
   }, []);
 
-  const handleChange = (answer: any) => {
+  const handleChange = (answer) => {
     setSelectedAnswer(answer);
-    const data = { answerText: (answer as any)?.text };
+    const data = { answerText: (answer)?.text };
     axios
       .put(
         `http://localhost:5000/knowledge-check-blocks/1`,
@@ -44,13 +44,13 @@ const KnowledgeCheckBlock = () => {
       .catch(error => console.log(error));
   }
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
 
     const data = {
       submitted: true,
-      answerText: (selectedAnswer as any)?.text
+      answerText: (selectedAnswer)?.text
     };
     axios
       .put(
@@ -68,7 +68,7 @@ const KnowledgeCheckBlock = () => {
   }
 
   const takeAgain = () => {
-    setSubmitted(false) as any
+    setSubmitted(false)
     setSelectedAnswer({})
 
     const data = {
@@ -89,7 +89,7 @@ const KnowledgeCheckBlock = () => {
       .catch(error => console.log(error));
   }
 
-  const isCorrect = (selectedAnswer as any)?.isCorrect ? 'correct' : 'incorrect'
+  const isCorrect = (selectedAnswer)?.isCorrect ? 'correct' : 'incorrect'
 
   console.log(knowledgeCheckData)
 
@@ -97,17 +97,17 @@ const KnowledgeCheckBlock = () => {
     <>
       <h3>Knowledge Check Block</h3>
       <div className='knowledge-check-block'>
-        <p>{(knowledgeCheckData as any)?.question?.text}</p>
-        <img className="knowledge-check-image" alt="knowledge-check-img" src={(knowledgeCheckData as any)?.question?.media?.url} />
+        <p>{(knowledgeCheckData)?.question?.text}</p>
+        <img className="knowledge-check-image" alt="knowledge-check-img" src={(knowledgeCheckData)?.question?.media?.url} />
         <div className="border"></div><br/>
-        {(knowledgeCheckData as any)?.answers?.map((a: any, i: any) => {
+        {(knowledgeCheckData)?.answers?.map((a, i) => {
           return (
             <div
               className={`selector select-answer-box ${a === selectedAnswer && 'selected'} ${submitted && (a?.isCorrect ? 'correct' : 'incorrect')}`}
               key={i}
               onClick={() => handleChange(a)}
             >
-              <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer as any)?.text} />
+              <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer)?.text} />
               <label className='radio-custom-label'>
                 {a.text}
               </label>
@@ -121,7 +121,7 @@ const KnowledgeCheckBlock = () => {
           <div className='results-container'>
             <div className='result-box'>
               <p>{startCase(isCorrect)}</p>
-              <p>{(knowledgeCheckData as any)?.feedback}</p>
+              <p>{(knowledgeCheckData)?.feedback}</p>
             </div>
             <div>
               <p>Take Again</p>
