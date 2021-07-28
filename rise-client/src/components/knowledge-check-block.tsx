@@ -108,7 +108,9 @@ const KnowledgeCheckBlock = () => {
             </div>
             )
         })}<br/>
-        <button className="btn" disabled={!isEmpty(selectedAnswer) && submitted} type="submit" onClick={handleSubmit}>Submit</button><br/><br/>
+        <div className='btn-container'>
+          <button className="btn" disabled={!isEmpty(selectedAnswer) && submitted} type="submit" onClick={handleSubmit}>Submit</button><br/><br/>
+        </div>
         {submitted && (
           <div>
             {(selectedAnswer as any)?.isCorrect ? 'Correct' : 'Incorrect'}<br/><br/>

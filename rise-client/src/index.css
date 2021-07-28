@@ -36,6 +36,32 @@ code {
   }
 }
 
+.btn-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  padding: 1em 5em;
+  border-radius: 5em;
+  background-color: #c0c0c0;
+  color: #ffffff;
+  border: none;
+  margin: 1em 0;
+  transition: all 0.25s ease;
+}
+
+.btn:not([disabled]) {
+  cursor: pointer;
+  background-color: #747a7e;
+}
+
+.btn:hover:not([disabled]) {
+  background-color: #f8f8f8;
+}
+
 .border {
   width: 100%;
   border-bottom: 1px solid #cacbcb;
