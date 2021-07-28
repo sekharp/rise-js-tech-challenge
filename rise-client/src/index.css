@@ -107,7 +107,7 @@ code {
 }
 
 .radio-custom:checked + .radio-custom-label:before {
-  content: "⬤";
+  content: "⚫";
 }
 
 .correct .radio-custom + .radio-custom-label:before {

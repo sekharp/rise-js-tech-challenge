@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { isEmpty, startCase } from 'lodash';
 import retakeIcon from './../images/retake-icon.png'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const KnowledgeCheckBlock = () => {
   const [knowledgeCheckData, setKnowledgeCheckData] = useState({});
@@ -89,7 +91,7 @@ const KnowledgeCheckBlock = () => {
       .catch(error => console.log(error));
   }
 
-  const isCorrect = (selectedAnswer)?.isCorrect ? 'correct' : 'incorrect'
+  const isCorrectText = (selectedAnswer)?.isCorrect ? 'correct' : 'incorrect'
 
   console.log(knowledgeCheckData)
 
@@ -120,8 +122,17 @@ const KnowledgeCheckBlock = () => {
         {submitted && (
           <div className='results-container'>
             <div className='result-box'>
-              <p>{startCase(isCorrect)}</p>
-              <p>{(knowledgeCheckData)?.feedback}</p>
+              {selectedAnswer?.isCorrect ?
+                <>
+                  <CheckCircleOutlineIcon />
+                  <p>{startCase(isCorrectText)}</p>
+                </> :
+                <>
+                  <HighlightOffIcon />
+                  <p>{startCase(isCorrectText)}</p>
+                </>
+              }
+              <p className='feedback'>{(knowledgeCheckData)?.feedback}</p>
             </div>
             <div>
               <p>Take Again</p>
