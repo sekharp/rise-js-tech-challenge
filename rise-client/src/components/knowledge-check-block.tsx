@@ -97,9 +97,10 @@ const KnowledgeCheckBlock = () => {
       <div className='knowledge-check-block'>
         <p>{(knowledgeCheckData as any)?.question?.text}</p>
         <img className="knowledge-check-image" alt="knowledge-check-img" src={(knowledgeCheckData as any)?.question?.media?.url} />
+        <div className="border"></div><br/>
         {(knowledgeCheckData as any)?.answers?.map((a: any, i: any) => {
           return (
-            <div className={`option ${a?.text}`} key={i} onClick={() => handleChange(a)}>
+            <div className={`selector select-answer-box ${a?.text}`} key={i} onClick={() => handleChange(a)}>
               <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer as any)?.text} />
               <label className='radio-custom-label'>
                 {a.text}
