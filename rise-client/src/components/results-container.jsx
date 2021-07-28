@@ -20,11 +20,11 @@ const ResultsContainer = ({
             {selectedAnswer?.isCorrect ?
               <div>
                 <CheckCircleOutlineIcon style={{ fontSize: 100 }}/>
-                <p>{startCase(isCorrectText)}</p>
+                <p><strong>{startCase(isCorrectText)}</strong></p>
               </div> :
               <div>
                 <HighlightOffIcon style={{ fontSize: 100 }}/>
-                <p>{startCase(isCorrectText)}</p>
+                <p><strong>{startCase(isCorrectText)}</strong></p>
               </div>
             }
             <p className='feedback'>{feedback}</p>
