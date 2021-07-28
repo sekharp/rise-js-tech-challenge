@@ -14,10 +14,10 @@ const KnowledgeCheckBlock = () => {
       .then((res) => res.data)
       .then((res) => {
         (res[0]).answers.map((a) => {
-          if (a.isSelected) {
+          if (a?.isSelected) {
             setSelectedAnswer(a);
           }
-          if (res[0].submitted) {
+          if (res[0]?.submitted) {
             setSubmitted(true);
           }
         })
@@ -28,7 +28,7 @@ const KnowledgeCheckBlock = () => {
 
   const handleChange = (answer) => {
     setSelectedAnswer(answer);
-    const data = { answerText: (answer)?.text };
+    const data = { answerText: answer?.text };
     axios
       .put(
         `http://localhost:5000/knowledge-check-blocks/1`,
@@ -50,7 +50,7 @@ const KnowledgeCheckBlock = () => {
 
     const data = {
       submitted: true,
-      answerText: (selectedAnswer)?.text
+      answerText: selectedAnswer?.text
     };
     axios
       .put(
@@ -93,17 +93,17 @@ const KnowledgeCheckBlock = () => {
     <>
       <h3>Knowledge Check Block</h3>
       <div className='knowledge-check-block'>
-        <p>{(knowledgeCheckData)?.question?.text}</p>
-        <img className="knowledge-check-image" alt="knowledge-check-img" src={(knowledgeCheckData)?.question?.media?.url} />
+        <p>{knowledgeCheckData?.question?.text}</p>
+        <img className="knowledge-check-image" alt="knowledge-check-img" src={knowledgeCheckData?.question?.media?.url} />
         <div className="border"></div><br/>
-        {(knowledgeCheckData)?.answers?.map((a, i) => {
+        {knowledgeCheckData?.answers?.map((a, i) => {
           return (
             <div
               className={`selector select-answer-box ${a === selectedAnswer && 'selected'} ${submitted && (a?.isCorrect ? 'correct' : 'incorrect')}`}
               key={i}
               onClick={() => !submitted && (handleChange(a))}
             >
-              <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer)?.text} disabled={submitted} />
+              <input type="radio" className='radio-custom' checked={a?.text === selectedAnswer?.text} disabled={submitted} />
               <label className='radio-custom-label'>
                 {a.text}
               </label>
