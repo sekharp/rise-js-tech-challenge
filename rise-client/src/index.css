@@ -118,6 +118,11 @@ code {
   content: "X";
 }
 
+.selected {
+  border: 1px solid black;
+  transition: border 1s ease-in-out;
+}
+
 .selector:hover:not([disabled]) {
   background-color: #f8f8f8;
 }
