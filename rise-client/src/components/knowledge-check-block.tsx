@@ -67,6 +67,28 @@ const KnowledgeCheckBlock = () => {
       .catch(error => console.log(error));
   }
 
+  const takeAgain = () => {
+    setSubmitted(false) as any
+    setSelectedAnswer({})
+
+    const data = {
+      answerText: ''
+    };
+    axios
+      .put(
+          `http://localhost:5000/knowledge-check-blocks/1`,
+          {
+              method: "PUT",
+              headers: {
+                  'Content-type': 'application/json'
+              },
+              body: data
+          }
+      )
+      .then((res) => res.data)
+      .catch(error => console.log(error));
+  }
+
   console.log(knowledgeCheckData)
 
   return (
@@ -91,9 +113,7 @@ const KnowledgeCheckBlock = () => {
             {(selectedAnswer as any)?.isCorrect ? 'Correct' : 'Incorrect'}<br/><br/>
             {(knowledgeCheckData as any)?.feedback}<br/><br/>
             Take Again<br/><br/>
-            <a onClick={() => {
-              setSubmitted(false) as any && setSelectedAnswer({})
-            }}>
+            <a onClick={takeAgain}>
               <img src={retakeIcon} className='retake-icon' />
             </a>
           </div>
