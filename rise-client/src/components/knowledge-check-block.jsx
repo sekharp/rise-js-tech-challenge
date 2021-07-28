@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { isEmpty, startCase } from 'lodash';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import ReplayIcon from '@material-ui/icons/Replay';
+import { isEmpty } from 'lodash';
+import ResultsContainer from './results-container'
 
 const KnowledgeCheckBlock = () => {
   const [knowledgeCheckData, setKnowledgeCheckData] = useState({});
@@ -91,8 +89,6 @@ const KnowledgeCheckBlock = () => {
       .catch(error => console.log(error));
   }
 
-  const isCorrectText = (selectedAnswer)?.isCorrect ? 'correct' : 'incorrect'
-
   return (
     <>
       <h3>Knowledge Check Block</h3>
@@ -117,29 +113,12 @@ const KnowledgeCheckBlock = () => {
         <div className='btn-container'>
           <button className="btn" disabled={isEmpty(selectedAnswer) || submitted} type="submit" onClick={handleSubmit}>Submit</button><br/><br/>
         </div>
-        {submitted && (
-          <div className='results-container'>
-            <div className='result-box'>
-              {selectedAnswer?.isCorrect ?
-                <div>
-                  <CheckCircleOutlineIcon style={{ fontSize: 100 }}/>
-                  <p>{startCase(isCorrectText)}</p>
-                </div> :
-                <div>
-                  <HighlightOffIcon style={{ fontSize: 100 }}/>
-                  <p>{startCase(isCorrectText)}</p>
-                </div>
-              }
-              <p className='feedback'>{(knowledgeCheckData)?.feedback}</p>
-            </div>
-            <div>
-              <p><strong>Take Again</strong></p>
-              <a onClick={takeAgain}>
-                <ReplayIcon style={{ fontSize: 50 }}/>
-              </a>
-            </div>
-          </div>
-        )}
+        <ResultsContainer
+          submitted={submitted}
+          selectedAnswer={selectedAnswer}
+          feedback={knowledgeCheckData?.feedback}
+          takeAgain={takeAgain}
+        />
       </div>
     </>
   );
