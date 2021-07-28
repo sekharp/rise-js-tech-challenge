@@ -119,12 +119,16 @@ const KnowledgeCheckBlock = () => {
         </div>
         {submitted && (
           <div className='results-container'>
-            {startCase(isCorrect)}<br/><br/>
-            {(knowledgeCheckData as any)?.feedback}<br/><br/>
-            Take Again<br/><br/>
-            <a onClick={takeAgain}>
-              <img src={retakeIcon} className='retake-icon' />
-            </a>
+            <div className='result-box'>
+              <p>{startCase(isCorrect)}</p>
+              <p>{(knowledgeCheckData as any)?.feedback}</p>
+            </div>
+            <div>
+              <p>Take Again</p>
+              <a onClick={takeAgain}>
+                <img src={retakeIcon} className='retake-icon' />
+              </a>
+            </div>
           </div>
         )}
       </div>
