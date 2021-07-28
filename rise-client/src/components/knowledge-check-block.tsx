@@ -102,7 +102,7 @@ const KnowledgeCheckBlock = () => {
         <div className="border"></div><br/>
         {(knowledgeCheckData as any)?.answers?.map((a: any, i: any) => {
           return (
-            <div className={`selector select-answer-box ${submitted && (isCorrect)}`} key={i} onClick={() => handleChange(a)}>
+            <div className={`selector select-answer-box ${submitted && (a?.isCorrect ? 'correct' : 'incorrect')}`} key={i} onClick={() => handleChange(a)}>
               <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer as any)?.text} />
               <label className='radio-custom-label'>
                 {a.text}
@@ -114,7 +114,7 @@ const KnowledgeCheckBlock = () => {
           <button className="btn" disabled={!isEmpty(selectedAnswer) && submitted} type="submit" onClick={handleSubmit}>Submit</button><br/><br/>
         </div>
         {submitted && (
-          <div>
+          <div className='results-container'>
             {startCase(isCorrect)}<br/><br/>
             {(knowledgeCheckData as any)?.feedback}<br/><br/>
             Take Again<br/><br/>

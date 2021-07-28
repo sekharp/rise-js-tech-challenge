@@ -110,14 +110,22 @@ code {
   content: "⬤";
 }
 
-.correct .radio-custom:checked + .radio-custom-label:before {
+.correct .radio-custom + .radio-custom-label:before {
   content: "✓";
 }
 
-.incorrect .radio-custom:checked + .radio-custom-label:before {
+.incorrect .radio-custom + .radio-custom-label:before {
   content: "X";
 }
 
 .selector:hover:not([disabled]) {
   background-color: #f8f8f8;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
