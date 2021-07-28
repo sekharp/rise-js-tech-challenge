@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { isEmpty, startCase } from 'lodash';
-import retakeIcon from './../images/retake-icon.png'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import ReplayIcon from '@material-ui/icons/Replay';
@@ -94,8 +93,6 @@ const KnowledgeCheckBlock = () => {
 
   const isCorrectText = (selectedAnswer)?.isCorrect ? 'correct' : 'incorrect'
 
-  console.log(isEmpty(selectedAnswer))
-
   return (
     <>
       <h3>Knowledge Check Block</h3>
@@ -136,7 +133,7 @@ const KnowledgeCheckBlock = () => {
               <p className='feedback'>{(knowledgeCheckData)?.feedback}</p>
             </div>
             <div>
-              <p>Take Again</p>
+              <p><strong>Take Again</strong></p>
               <a onClick={takeAgain}>
                 <ReplayIcon style={{ fontSize: 50 }}/>
               </a>
