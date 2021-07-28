@@ -103,11 +103,19 @@ code {
   text-align: center;
   margin: 1em 5em 1em 1em;
   cursor: pointer;
+  color: #bbb;
 }
 
 .radio-custom:checked + .radio-custom-label:before {
+  content: "⬤";
+}
+
+.correct .radio-custom:checked + .radio-custom-label:before {
   content: "✓";
-  color: #bbb;
+}
+
+.incorrect .radio-custom:checked + .radio-custom-label:before {
+  content: "X";
 }
 
 .selector:hover:not([disabled]) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { isEmpty } from 'lodash';
+import { isEmpty, startCase } from 'lodash';
 import retakeIcon from './../images/retake-icon.png'
 
 const KnowledgeCheckBlock = () => {
@@ -89,6 +89,8 @@ const KnowledgeCheckBlock = () => {
       .catch(error => console.log(error));
   }
 
+  const isCorrect = (selectedAnswer as any)?.isCorrect ? 'correct' : 'incorrect'
+
   console.log(knowledgeCheckData)
 
   return (
@@ -100,7 +102,7 @@ const KnowledgeCheckBlock = () => {
         <div className="border"></div><br/>
         {(knowledgeCheckData as any)?.answers?.map((a: any, i: any) => {
           return (
-            <div className={`selector select-answer-box ${a?.text}`} key={i} onClick={() => handleChange(a)}>
+            <div className={`selector select-answer-box ${submitted && (isCorrect)}`} key={i} onClick={() => handleChange(a)}>
               <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer as any)?.text} />
               <label className='radio-custom-label'>
                 {a.text}
@@ -113,7 +115,7 @@ const KnowledgeCheckBlock = () => {
         </div>
         {submitted && (
           <div>
-            {(selectedAnswer as any)?.isCorrect ? 'Correct' : 'Incorrect'}<br/><br/>
+            {startCase(isCorrect)}<br/><br/>
             {(knowledgeCheckData as any)?.feedback}<br/><br/>
             Take Again<br/><br/>
             <a onClick={takeAgain}>
