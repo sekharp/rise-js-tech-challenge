@@ -59,7 +59,7 @@ code {
 }
 
 .btn:hover:not([disabled]) {
-  background-color: #f8f8f8;
+  background-color: #c0c0c0;
 }
 
 .border {

@@ -93,7 +93,7 @@ const KnowledgeCheckBlock = () => {
 
   const isCorrectText = (selectedAnswer)?.isCorrect ? 'correct' : 'incorrect'
 
-  console.log(knowledgeCheckData)
+  console.log(isEmpty(selectedAnswer))
 
   return (
     <>
@@ -109,7 +109,7 @@ const KnowledgeCheckBlock = () => {
               key={i}
               onClick={() => handleChange(a)}
             >
-              <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer)?.text} />
+              <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer)?.text} disabled={submitted} />
               <label className='radio-custom-label'>
                 {a.text}
               </label>
@@ -117,20 +117,20 @@ const KnowledgeCheckBlock = () => {
             )
         })}<br/>
         <div className='btn-container'>
-          <button className="btn" disabled={!isEmpty(selectedAnswer) && submitted} type="submit" onClick={handleSubmit}>Submit</button><br/><br/>
+          <button className="btn" disabled={isEmpty(selectedAnswer) || submitted} type="submit" onClick={handleSubmit}>Submit</button><br/><br/>
         </div>
         {submitted && (
           <div className='results-container'>
             <div className='result-box'>
               {selectedAnswer?.isCorrect ?
-                <>
+                <div>
                   <CheckCircleOutlineIcon />
                   <p>{startCase(isCorrectText)}</p>
-                </> :
-                <>
+                </div> :
+                <div>
                   <HighlightOffIcon />
                   <p>{startCase(isCorrectText)}</p>
-                </>
+                </div>
               }
               <p className='feedback'>{(knowledgeCheckData)?.feedback}</p>
             </div>
