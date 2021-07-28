@@ -4,6 +4,7 @@ import { isEmpty, startCase } from 'lodash';
 import retakeIcon from './../images/retake-icon.png'
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import ReplayIcon from '@material-ui/icons/Replay';
 
 const KnowledgeCheckBlock = () => {
   const [knowledgeCheckData, setKnowledgeCheckData] = useState({});
@@ -107,7 +108,7 @@ const KnowledgeCheckBlock = () => {
             <div
               className={`selector select-answer-box ${a === selectedAnswer && 'selected'} ${submitted && (a?.isCorrect ? 'correct' : 'incorrect')}`}
               key={i}
-              onClick={() => handleChange(a)}
+              onClick={() => !submitted && (handleChange(a))}
             >
               <input type="radio" className='radio-custom' checked={a?.text === (selectedAnswer)?.text} disabled={submitted} />
               <label className='radio-custom-label'>
@@ -124,11 +125,11 @@ const KnowledgeCheckBlock = () => {
             <div className='result-box'>
               {selectedAnswer?.isCorrect ?
                 <div>
-                  <CheckCircleOutlineIcon />
+                  <CheckCircleOutlineIcon style={{ fontSize: 100 }}/>
                   <p>{startCase(isCorrectText)}</p>
                 </div> :
                 <div>
-                  <HighlightOffIcon />
+                  <HighlightOffIcon style={{ fontSize: 100 }}/>
                   <p>{startCase(isCorrectText)}</p>
                 </div>
               }
@@ -137,7 +138,7 @@ const KnowledgeCheckBlock = () => {
             <div>
               <p>Take Again</p>
               <a onClick={takeAgain}>
-                <img src={retakeIcon} className='retake-icon' />
+                <ReplayIcon style={{ fontSize: 50 }}/>
               </a>
             </div>
           </div>
