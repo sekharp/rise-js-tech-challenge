@@ -29,11 +29,6 @@ code {
   border: 1px solid #c0c0c0;
   box-sizing: border-box;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-
-  @media (max-width: 820px) {
-    margin: 1em auto;
-    width: 100%;
-  }
 }
 
 .btn-container {
@@ -97,9 +92,9 @@ code {
   border: 2px solid #ddd;
   display: inline-block;
   vertical-align: middle;
-  width: 20px;
-  height: 20px;
-  padding: 2px;
+  width: 1em;
+  height: 1em;
+  padding: 0.25em;
   text-align: center;
   margin: 1em 5em 1em 1em;
   cursor: pointer;
@@ -145,4 +140,20 @@ code {
 
 .feedback {
   color: #707070;
+}
+
+@media only screen and (max-width: 420px) {
+  .knowledge-check-block {
+    margin: 0 2em;
+    padding: 2em;
+    font-size: 16px;
+  }
+
+  .radio-custom + .radio-custom-label:before {
+    margin: 1em 1em 1em 0.1em;
+  }
+
+  .selector {
+    padding: 1em 0.25em 1em 1em;
+  }
 }
