@@ -1,6 +1,6 @@
 # Rise Developer Challenge - Knowledge Check Block
 
-I implemented the `knowledge-check-blocks` interactive block, from the [Rise Developer Challenge Instructions](https://github.com/sekharp/rise-js-tech-challenge). The REST API persists the block's UI state via a PUT endpoint with a few additional database field changes. This is a React app that is mobile responsive and accommodates a wide-variety of end users and devices.
+I implemented the `knowledge-check-blocks` interactive block, from the [Rise Developer Challenge Instructions](https://rise.articulate.com/share/QNNxptM9l1O6nA-l3BNQdOO-_6dW8prV#/lessons/KZGlDaGM6YMeXrEUB3N3E2oWvx72stEt). The REST API persists the block's UI state via a PUT endpoint with a few additional database field changes. This is a React app that is mobile responsive and accommodates a wide-variety of end users and devices.
 
 With more time, I would've focused on testing this application and accessibility to open this training tool up to a wider userbase.
 
