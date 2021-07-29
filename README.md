@@ -1,27 +1,34 @@
-## Welcome to the Rise Developer Challenge!
+# Rise Developer Challenge - Knowledge Check Block
 
-### The coding challenge
+I implemented the `knowledge-check-blocks` interactive block. The REST API persists the block's UI state via a PUT endpoint with a few additional database field changes. This is a React app that is mobile responsive and accommodates a wide-variety of end users and devices.
 
-Your goal is to implement one of Rise's interactive blocks (see [this Rise course](https://rise.articulate.com/share/QNNxptM9l1O6nA-l3BNQdOO-_6dW8prV) for more details).
+With more time, I would've focused on testing this application and accessibility to open this training tool up to a wider userbase.
 
-At a minimum, your implementation should:
-1. populate your interactive block's configuration from the provided REST API (see [`/server`](/server))
-1. use `react` for your UI components
-1. persist your interactive block's UI state by extending the provided REST API
+## How To Run This App
 
-What you choose to implement from there is up to you. :)
+In your terminal, you will need to run the server (available at `http://localhost:5000/knowledge-check-blocks`):
 
-### Implementation notes:
+- `cd server`
+- `npm install`
+- `npm start`
 
-- your interactive block implementation should live in the [`/client`](/client) directory and have its own `package.json`, `node_modules`, etc.
-- feel free to bootstrap your solution with [create-react-app](https://github.com/facebookincubator/create-react-app) (or whatever tools you prefer)
-- the beginnings of a REST API lives in [`/server`](/server) and is reachable at http://localhost:5000
-  - the REST API currently uses variables as a makeshift in-memory database
+And from another window in your terminal at the root directory you will need to run the frontend:
 
-### Getting started
+- `cd rise-client`
+- `yarn start`
 
-To get the REST API up and running on your dev machine:
+From there this app is available at: `http:localhost:3000/`
 
-1. `cd server`
-1. `yarn install` (or `npm install`)
-1. `yarn start` (or `npm start`)
+## App Demo
+
+![GIF of Rise Knowledge Check Block App Demo](rise-knowledge-check-block-app.gif)
+
+## Tech Stack Notes
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). [Material UI](https://material-ui.com/components/material-icons/) icons are also used. The project is a full-stack Javascript app. It uses [React](https://github.com/facebook/react) on the frontend, with a backend in Javascript via [Express](https://github.com/expressjs/express) with [Morgan](https://github.com/expressjs/morgan) for HTTP request logging middleware.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
