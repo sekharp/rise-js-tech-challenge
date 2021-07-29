@@ -1,43 +1,31 @@
-# Getting Started with Create React App
+# Rise Developer Challenge - Knowledge Check Block
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I implemented the `knowledge-check-blocks` interactive block. The REST API persists the block's UI state via a PUT endpoint with a few additional database field changes. This is a React app that is mobile responsive and accommodates a wide-variety of end users and devices.
 
-## Available Scripts
+With more time, I would've focused on testing this application and accessibility to open this training tool up to a wider userbase.
 
-In the project directory, you can run:
+## How To Run This App
 
-### `yarn start`
+In your terminal, you will need to run the server (available at `http://localhost:5000/knowledge-check-blocks`):
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- `cd server`
+- `npm install`
+- `npm start`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+And from another window in your terminal at the root directory you will need to run the frontend:
 
-### `yarn test`
+- `cd rise-client`
+- `yarn start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+From there this app is available at: `http:localhost:3000/`
 
-### `yarn build`
+## App Demo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![GIF of Rise Knowledge Check Block App Demo](rise-knowledge-check-block-app.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech Stack Notes
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). [Material UI](https://material-ui.com/components/material-icons/) icons are also used. The project is a full-stack Javascript app. It uses [React](https://github.com/facebook/react) on the frontend, with a backend in Javascript via [Express](https://github.com/expressjs/express) with [Morgan](https://github.com/expressjs/morgan) for HTTP request logging middleware.
 
 ## Learn More
 
