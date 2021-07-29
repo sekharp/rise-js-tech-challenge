@@ -18,13 +18,20 @@ code {
   margin-top: 3em;
 }
 
+.block-header-container {
+  width: 75%;
+  text-align: left;
+  display: inline-block;
+  margin: 0 2em;
+}
+
 .knowledge-check-block {
   font-family: "Merriweather";
   font-size: 18px;
   width: 75%;
   text-align: left;
   display: inline-block;
-  margin: 0 1.5% 2em;
+  margin: 2em;
   padding: 3.5em;
   border: 1px solid #c0c0c0;
   box-sizing: border-box;
@@ -142,7 +149,7 @@ code {
   color: #707070;
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 768px) {
   .knowledge-check-block {
     margin: 0 2em;
     padding: 2em;

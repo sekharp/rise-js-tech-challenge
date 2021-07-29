@@ -91,7 +91,9 @@ const KnowledgeCheckBlock = () => {
 
   return (
     <>
-      <h3>Knowledge Check Block</h3>
+      <div className='block-header-container'>
+        <h3>Knowledge Check Block</h3>
+      </div>
       <div className='knowledge-check-block'>
         <p>{knowledgeCheckData?.question?.text}</p>
         <img className="knowledge-check-image" alt="knowledge-check-img" src={knowledgeCheckData?.question?.media?.url} />
